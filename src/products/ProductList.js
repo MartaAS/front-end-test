@@ -11,18 +11,25 @@ export const ProductList = () => {
     })
   }, [])
 
+  const [filter, setFilter] = useState('')
+
+  const filterData = (product) => {
+    const searchText = filter.toLowerCase()
+    return product.model.toLowerCase().includes(searchText) || product.brand.toLowerCase().includes(searchText)
+  }
+
   return (
     <div>
-      <Search />
+      <Search setFilter={setFilter} />
       {
-        data?.map(item => (
+        data?.filter(filterData).map(item => (
           <ProductCard
             key={item.id}
             {...item}
           />
         )
         )
-}
+      }
     </div>
   )
 }
