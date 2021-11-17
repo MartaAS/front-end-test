@@ -2,9 +2,8 @@ import React from 'react'
 import {
   BrowserRouter as Router, Redirect, Route, Switch
 } from 'react-router-dom'
-import { ProductDetailScreen } from '../pages/ProductDetailScreen'
-import { ProductListScreen } from '../pages/ProductListScreen'
-
+import { ProductList } from '../products/ProductList'
+import { ProductScreen } from '../products/ProductScreen'
 export const AppRouter = () => {
   return (
     <Router>
@@ -12,8 +11,8 @@ export const AppRouter = () => {
         {/* <NavBar /> */}
         <div className='container'>
           <Switch>
-            <Route exact path='/' component={ProductDetailScreen} />
-            <Route exact path='/productList' component={ProductListScreen} />
+            <Route exact path='/' component={ProductList} />
+            <Route exact path='/product/:productid' component={ProductScreen} />
             <Redirect to='/' />
           </Switch>
         </div>
